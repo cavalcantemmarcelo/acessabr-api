@@ -6,7 +6,7 @@ module.exports = {
         
         const places = await Places.find();
         return res.json(places);
-        
+
     },
 
     async store(req, res) {
@@ -47,5 +47,11 @@ module.exports = {
         }
         
         return res.send();
-    }   
+    },
+
+    async show(req, res) {
+        const place = await Places.findById(req.params.id);
+        return res.json(place);
+    }
+
 };
