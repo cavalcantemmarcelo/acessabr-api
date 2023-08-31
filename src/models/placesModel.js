@@ -1,6 +1,6 @@
 const  mongoose = require('mongoose');
 
-const PlacesDataSchema = new mongoose.Schema({ 
+const PlacesSchema = new mongoose.Schema({ 
     name: String,
     image: String,
     link: String,
@@ -21,4 +21,4 @@ const PlacesDataSchema = new mongoose.Schema({
     destack: Boolean
 });
 
-module.exports = mongoose.model('PlacesData', PlacesDataSchema);
+module.exports = mongoose.model('Places', PlacesSchema);
