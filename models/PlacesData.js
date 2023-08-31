@@ -13,8 +13,12 @@ const PlacesDataSchema = new mongoose.Schema({
         long: Number
     },
     facilities: [
-        {item: Number, status: Boolean}
+        {
+            item: Number, 
+            status: Boolean
+        }
     ],
+    destack: Boolean
 });
 
 module.exports = mongoose.model('PlacesData', PlacesDataSchema);
