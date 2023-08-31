@@ -1,4 +1,4 @@
-const Cities = require('../models/CitiesDate');
+const Cities = require('../models/citiesModel');
 
 module.exports = {
 

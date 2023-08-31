@@ -1,4 +1,4 @@
-const Places = require('../models/PlacesData');
+const Places = require('../models/placesModel');
 
 module.exports = {
 
