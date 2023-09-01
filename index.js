@@ -14,8 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-const placesRoutes = require('./src/routes/placesRoutes');
 const citiesRoutes = require('./src/routes/citiesRoutes');
+const favoritesRoutes = require('./src/routes/favoritesRoutes');
+const placesRoutes = require('./src/routes/placesRoutes');
 const usersRoutes = require('./src/routes/usersRoutes');
 
 // JWT verification middleware
@@ -32,9 +33,10 @@ app.use(function(req, res, next) {
     }
 });
 
-app.use('/places', placesRoutes);
-app.use('/cities', citiesRoutes);
 app.use('/auth', usersRoutes);
+app.use('/cities', citiesRoutes);
+app.use('/favorites', favoritesRoutes);
+app.use('/places', placesRoutes);
 
 app.use('/', (req, res) => {
     res.send('Hello World!');
