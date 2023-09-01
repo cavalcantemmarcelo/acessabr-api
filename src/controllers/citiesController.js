@@ -29,13 +29,19 @@ module.exports = {
     },
 
     async destroy(req, res) {
-        await Cities.findByIdAndRemove(req.params.id);
+        try {
+            const city = await Cities.findByIdAndRemove(req.params.id);
 
-        if(!city) {
-            return res.status(400).send({ error: 'Local não encontrado' });
+            if (!city) {
+                return res.status(400).send({ error: 'Cidade não encontrada' });
+            }
+
+            return res.send();
+        }   
+        catch (error) {
+            console.error('Erro ao deletar cidade:', error);
+            return res.status(500).json({ status: false, message: 'Erro ao deletar a cidade.' });
         }
-        
-        return res.send();
     },
 
     async show(req, res) {
