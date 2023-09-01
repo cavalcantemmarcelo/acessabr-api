@@ -19,8 +19,7 @@ const UsersSchema = new Schema({
 
     password: {
         type: String,
-        required: true,
-        select: false
+        required: true
     },
 
     createdAt: {
@@ -33,4 +32,4 @@ UsersSchema.methods.comparePassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 }
 
-mongoose.model('Users', UsersSchema);
+module.exports = mongoose.model('Users', UsersSchema);

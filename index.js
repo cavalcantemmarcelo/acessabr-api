@@ -10,6 +10,8 @@ const cors = require('cors');
 app.use(bodyParser.urlencoded({ extended: true })); // Place bodyParser middleware here
 app.use(bodyParser.json());
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cors());
 
 const placesRoutes = require('./src/routes/placesRoutes');
@@ -37,7 +39,6 @@ app.use('/auth', usersRoutes);
 app.use('/', (req, res) => {
     res.send('Hello World!');
 });
-
 
 app.use(function(req, res) {
     res.status(404).send({ url: req.originalUrl + ' not found' });
