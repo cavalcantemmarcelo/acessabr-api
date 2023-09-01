@@ -1,13 +1,14 @@
 const Favorites = require('../models/favoritesModel');
 
 module.exports = {
-    index: (req, res) => {
-        Favorites.find({}, (err, Favorites) => {
-            if (err) {
-                res.send(err);
-            }
-            res.json(Favorites);
-        });
+    index: async (req, res) => {
+        try {
+            const favorites = await Favorites.find().exec();
+            return res.json(favorites);
+        } catch (error) {
+            console.error('Error fetching favorites:', error);
+            return res.status(500).json({ status: false, message: 'Error fetching favorites' });
+        }
     },
 
     store: async (req, res) => {

@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const citiesRoutes = require('./src/routes/citiesRoutes');
+const contentsRoutes = require('./src/routes/contentsRoutes');
 const favoritesRoutes = require('./src/routes/favoritesRoutes');
 const placesRoutes = require('./src/routes/placesRoutes');
 const usersRoutes = require('./src/routes/usersRoutes');
@@ -35,6 +36,7 @@ app.use(function(req, res, next) {
 
 app.use('/auth', usersRoutes);
 app.use('/cities', citiesRoutes);
+app.use('/contents', contentsRoutes);
 app.use('/favorites', favoritesRoutes);
 app.use('/places', placesRoutes);
 
