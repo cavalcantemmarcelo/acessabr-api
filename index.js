@@ -20,6 +20,7 @@ const favoritesRoutes = require('./src/routes/favoritesRoutes');
 const placesRoutes = require('./src/routes/placesRoutes');
 const usersRoutes = require('./src/routes/usersRoutes');
 const ratingsRoutes = require('./src/routes/ratingsRoutes');
+const statesRoutes = require('./src/routes/statesRoutes');
 
 // JWT verification middleware
 app.use(function(req, res, next) {
@@ -41,6 +42,7 @@ app.use('/contents', contentsRoutes);
 app.use('/favorites', favoritesRoutes);
 app.use('/places', placesRoutes);
 app.use('/ratings', ratingsRoutes);
+app.use('/states', statesRoutes);
 
 app.use('/', (req, res) => {
     res.send('Hello World!');
