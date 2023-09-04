@@ -26,12 +26,13 @@ module.exports = {
     },
 
     destroy: (req, res) => {
-        Favorites.remove({ _id: req.params.id }, (err, Favorites) => {
-            if (err) {
-                res.send(err);
-            }
-            res.json({ message: 'Successfully deleted' });
-        });
+        const favorite = Favorites.findByIdAndRemove(req.params.id);
+
+        if (!favorite) {
+            return res.status(400).send({ error: 'Favorito não encontrado' });
+        }
+
+        return res.send();
     },
 
     find: (req, res) => {
