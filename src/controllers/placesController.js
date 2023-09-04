@@ -10,7 +10,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { name, image, link, description, location, tags, category } = req.body;
+        const { name, image, link, description, location, tags, category, city } = req.body;
         const place = await Places.create({
             name,
             image,
@@ -18,13 +18,14 @@ module.exports = {
             description,
             location,
             tags,
-            category
+            category,
+            city
         }, { maxTimeMS: 20000 });
         return res.json(place);
     },
 
     async update(req, res) {
-        const { name, image, link, description, location, tags, category } = req.body;
+        const { name, image, link, description, location, tags, category, city } = req.body;
 
         const place = await Places.findByIdAndUpdate(req.params.id, {
             name,
@@ -33,14 +34,15 @@ module.exports = {
             description,
             location,
             tags,
-            category
+            category,
+            city
         }, { new: true });  
 
         return res.json(place);
     },
 
     async destroy(req, res) {
-        await Places.findByIdAndRemove(req.params.id);
+        const place = await Places.findByIdAndRemove(req.params.id);
 
         if(!place) {
             return res.status(400).send({ error: 'Local não encontrado' });

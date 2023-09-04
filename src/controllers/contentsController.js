@@ -33,7 +33,7 @@ module.exports = {
     },
 
     async destroy(req, res) {
-        await Contents.findByIdAndRemove(req.params.id);
+        const contents = await Contents.findByIdAndRemove(req.params.id);
 
         if(!contents) {
             return res.status(400).send({ error: 'Conteúdo não encontrado' });

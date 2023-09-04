@@ -18,7 +18,11 @@ const PlacesSchema = new mongoose.Schema({
             status: Boolean
         }
     ],
-    destack: Boolean
+    destack: Boolean,
+    city: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Cities'
+    }
 });
 
 module.exports = mongoose.model('Places', PlacesSchema);
